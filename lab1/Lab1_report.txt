@@ -1,0 +1,65 @@
+###############################
+
+Bill Lin -- blin7
+
+Lab section: 6 TTh TA: Jay Roldan
+
+Due: 4/13/2014
+
+Lab Partner: None
+
+###############################
+
+Lab 1: Intro to Logic with Multimedia Logic©
+
+Learn how to use Multimedia Logic to build circuts to help us understand how logic works. Also demostrate De Morgan's Laws and logic minimization.
+
+Followed the tutorial to gain an understand of how Multimedia Logic works and utilized a couple of gates as well as create truth tables. Went on to do Part A of the lab in which I constructed a simple circut using some new gates as well. In Part B we took a truth table and constructed the circut using AND and OR gates. Created an expression for truth values using Sum of Products. Then we took that same circut and used only NAND gates. De Morgan's Laws helped when trying to figure out the expression for the circut. In Part C I did some boolean algebra and drew up a karnaugh map. I then created a simplified circut from my findings.
+
+DeMorgans: (AB)' = A' + B'           (A+B)' = A'B'
+
+AB means A AND B
+
+A+B means A OR B
+
+A' means NOT A
+
+A'B' means NOT A AND NOT B
+
+A'+B' means NOT A OR NOT B
+
+(AB)' means NOT (A AND B)
+
+(A+B)' means NOT (A OR B)
+
+A@B means A XOR B
+
+(A'B'C') + (A'B'C) + (A'BC)
+
+(((A'B'C') + (A'B'C) + (A'BC))')'
+
+((A'B'C')'(A'B'C)'(A'BC)')'
+
+
+
+A'B' + A'C
+
+A'(B' + C)
+
+((A')' + (B' + C)')'
+
+(A + (B' + C)')'
+
+The original circut had 44 transistors compared to the NAND gate circut which took a total of 60 transitors but using NOT gates the total becomes 36 transistors. Showing how much simplier NAND gates are compared to other gates.
+
+AND and OR gates are the inverse of NAND and NOR gates respectively. The inversion process requires an inverter which itself contains two transistors thus the reason why AND and OR gates have more transistors than NAND and NOR gates.
+
+To minimize logic through boolean algebra I drew up a karnaugh map from the truth table.
+C AB
+  00 01 11 10
+0 1  0  0  0
+1 1  1  0  0
+
+Above you can see there are 1's next to each other, horizontally and vertically. Looking at the changes in the values for each variable I noticed only one variable changed. Thus regardless what that variable is we can determine the answer from the ones that don't change. A' (B' + C) represents the simplified circut which has 16 transistors. I then went on to apply De Morgan's Law in order to further simplify it resulting in (A + (B C'))' with 12 transistors. Realizing there was a NOR gate in the previous step I unsimplified (BC') to (B' + C)' ending up with 10 transistors.
+
+Through this lab I was able to map out circuts that I had either in the form of an expression from a truth table or in my mind. I finally understood De Morgan's Law, "Break the line, change the sign, take it inside". I realized it when I had to write an expression for the new NAND only circut. I was really excited when I figured out how the karnaugh map applies to the circut. It really helped me visualize what exactly what was happening and understand how awesome NAND gates are. Though less a only couple of transistors it's a big jump in speed on a larger scale.

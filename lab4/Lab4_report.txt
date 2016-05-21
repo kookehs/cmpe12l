@@ -1,0 +1,32 @@
+Header
+###############################
+
+Bill Lin -- blin7
+
+Lab section: 6 TTh TA: Jay Roldan
+
+Due: 5/14/2014
+
+Lab Partner: Bryan Truong
+
+###############################
+
+Decimal Converter
+
+Purpose
+The purpose of this lab was to take on a big program by breaking it down into smaller bits. Learning to organize the control of the program through the use of flow charts.
+
+Procedure
+I started out by studying the given flow chart. Trying to visualize each scenario in my head so I would know how to approach each case. I began at the top of the flow chart and handle each case, making sure it would work as intended. Getting the user input then doing all the checks to ensure it was an valid input before putting it back out. Calculated digit and integer each time there was a new character. In the event of a new line the program moved on to either turn the number negative or begin the setup for the mask. For my mask I decided to shift right instead of reading from memory each time. I checked the result of the mask and printed a 1 or 0 accordingly. I repeated this as well for the hex mask. If invalid inputs were entered I had them removed from the result and text to let the user know.
+
+Algorithms and other data
+Comparison of two values required I use subtraction. Subtraction was either adding a variable that was already negative or NOT the value and add 1. In order to shift to the right I had to shift left 15 bits. I shifted by 15 bits because the LC3 has 16 bits. The shifting required two counters. One to keep track of the number of individual bit shifts, and one to keep track of the overall shifts to the left. Shifting to the right for hex required shifting to the left 12 bits. Instead of 15 bits it was 12 bits because 4 bits are moving rather than 1 bit. I also had to handle the case of an overflow so the mask would be correct. Once I applied the mask the result had to be shifted to the right as well so I could get the correct value for that position. Then I had to either add the number offset or hex offset to the result in order to print the ASCII character.
+
+What went wrong or what were the challenges?
+The biggest challenge here was keeping track of all the counters. Other than that problems could be solved by single-stepping.
+
+Other information (Answer any questions posed in the lab assignment.)
+No questions posed in this lab.
+
+Conclusion
+I had a realization of how awesome masking and shifting were when I did this lab. I had a conflict of whether or not I should have 16 memory address for each mask. The amount of memory wasn't an issue. I thought that if I read the mask once from memory and did shifting it would be more efficient. Although more complex to keep track of. Once I understood how they could be used the lab was easy. I do wonder in the real world if doing all the shifting in the registers is faster than reading from memory each time. I still would like to work the flow of my program more.

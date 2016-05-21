@@ -1,0 +1,42 @@
+###############################
+
+Bill Lin -- blin7
+
+Lab section: 6 TTh TA: Jay Roldan
+
+Due: 3/27/2014
+
+Lab Partner: Jonathan Lu
+
+###############################
+
+ALU and Memory
+
+The purpose of this lab to build a functioning Von Neumann model with ALU and memory components. Understand how registers and memory work together, and how the ALU processes its computations.
+
+Using the memory template we had to add parts for the memory component to function. I started out with the Truth Table for the Address Selector and built the circut that would approriately choose the right address. The next thing I had to do was construct the 4 multiplexers that would choose the correct register to read or write. Each multiplexer had to be hooked out to a bit of each register in order to read across the single correct register.
+
+For the ALU template I started with the Opcode Decoder which figured out the corresponding opcode from the two bit input. I then worked on the four multiplexer which would determine which operation's output would be selected. After that I did the circuts for each operation: NOT, AND, ADD. I went back and swapped out Bad Code for Subtraction. Added a circut similiar to the ADD operation but with the second number negated. The switch for the Carry In was already provided. I checked the highest order bit to see the signed value of our output and sent that off to the display LED. For overflow I checked if the Carry In to the highest bit and the Carry Out of the highest bit were different.
+
+For ALU and memory together I got rid of the keypad inputs from the ALU. I hooked up the one from memory and sent its output to a multiplexer along with the ALU's output to determine which one would be written to memory by flipping a switch and pressing Clock. I renamed a few senders and receivers to help me better understand where each was sending and receiving. Swapped the ALU's input to a register and Register 3.
+
+To check the overflow of computation of two numbers with the same sign, I check the Carry In to the highest bit and the Carry Out of the highest bit. By doing this we can establish whether or not they were the same or different. It's similar to the XOR of the addition. It doesn't matter which bit is 1, but if the situation is there then it could be overflow.
+
+What went wrong or what were the challenges?
+Here you can explain errors and challenges. If a solution or partial solution was or was not found and why? See example lab report.
+
+1) Sequential logic allows for states which in turn can store a value indefinitely until we apply a signal indicating we want to change the value. This allows us to create things like registers and memory.
+
+2) The clock signal is similar to a Write Enable. It's used to ensure that all processes are synchronized and when pressed allows the value to be written.
+
+3) We used Two's Compliment numbers. Negative numbers are indicated by their highest order bit being 1.
+
+4) Our ALU takes 4 bit input. Highest unsigned number would be 15 and 0 as the lowest. But since we are using Two's Compliments then the maximum number is 7 while the lowest is -8.
+
+5) We would need to increase the number of input bits for each piece of the ALU. The Output Multiplexer would need 4 additional multiplexers to handle the extra bits. Each operation would need more gates, senders, and receivers. As well as change the keypad to input 8 bits or we could sign extend.
+
+Conclusion
+I would say what I learned most from this lab is how each piece works and what happens when you put them together. I had a general idea of each of these worked, but when I actually wired each circut I had a really good grasp on what was happening. I would've liked to have learned more about each individual register but that maybe too difficult for this lab. What stood out to me most was that when I finished the lab I got a good overall understanding, but the one issue that stood out to me was "Why must it be Register 3 that is one input into the ALU?"
+
+EXTRA
+This lab wasn't too challenging, but it offered a lot of insight on the low-level concepts we learned. I also wanted to point out how Register 3 was chosen as an input into the ALU, but it doesn't explain why. Luckily I asked the tutor and learned a bit.

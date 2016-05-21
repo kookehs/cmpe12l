@@ -1,0 +1,25 @@
+//Symbol Name		Page Address
+//----------------	------------
+//	ALLISGOOD               3043
+//	BEGINLOOP               3045
+//	COUNTER                 3067
+//	GREETING                306C
+//	INCREMENTCOUNTER        304A
+//	ISNEWLINE               3030
+//	ISNEWLINECHAR           30C8
+//	ISNOTWITHIN             30EE
+//	ISOUTSIDE               303B
+//	ISWITHIN                311F
+//	ISZERO                  3033
+//	ISZEROCHAR              30DC
+//	MAXIMUMASCII            3066
+//	MINIMUMASCII            3065
+//	NEWLINE                 306A
+//	NEWLINEASCII            3063
+//	PRINTNUMBER             3053
+//	PRINTRESPONSE           3058
+//	PROMPT                  3085
+//	START                   3000
+//	USERINPUT               3062
+//	WHITESPACE              3068
+//	ZEROASCII               3064

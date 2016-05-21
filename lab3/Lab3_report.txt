@@ -1,0 +1,83 @@
+###############################
+
+Bill Lin -- blin7
+
+Lab section: 6 TTh TA: Jay Roldan
+
+Due: 5/4/2014
+
+Lab Partner: None
+
+###############################
+
+Not My Number
+
+Purpose
+The purpose of this lab is to familiarize ourselves with the LC3. Also apply our knowledge of assembly language, utilize basic instructions, and how to create a loop.
+
+Procedure
+I started by looking at echo.asm to understand the layout, format, and the flow of the program. I went on to start with the basics: clearing registers, creating a list of variables, creating a list of strings. Loading and printing the greeting/prompt was the next and easiset thing to do. From there I wrote things in the order that they would happen, but I also included branches to get around. I used subtraction to check the equality of two numbers. Had to look at the ASCII table to figure out the values for characters.
+
+Algorithms and other data
+For subtraction I NOT the second number and added 1 to it. Then adding the two numbers I would get subtraction. I also used subtraction as a means of comparison. Counter has the value of the lowest ASCII number then is incremented until the highest ASCII number is reached.
+
+Compare user input to each possibility
+if (userInput == newlineASCII) {
+	IsNewline();
+} else if (userInput == 0) {
+	IsZero();
+} else if (userInput > 9 || userInput < 1) {
+	IsOutside();
+} else {
+	AllIsGood();
+}
+
+void IsNewline() {
+	Print(isNewlineChar);
+	Print("\n");
+	Print("\n");
+	Print("\n");
+	Print("\n");
+}
+
+void IsZero() {
+	Print(isZeroChar);
+	Print("\n");
+	Print("\n");
+	Print("\n");
+	Print("\n");
+}
+
+void IsOutside() {
+	Print(isNotWithin);
+	Print("\n");
+	Print("\n");
+	Print("\n");
+	Print("\n");
+}
+
+void AllIsGood() {
+	for (int counter = 1; counter < maximumASCII + 1; ++counter) {
+		if (userInput == counter) {
+			continue;
+		} else {
+			Print(counter);
+		}
+	}
+	Print(finalResponse);
+}
+
+What went wrong or what were the challenges?
+I didn't run into an issue with my program, but I was asked to help figure out the issue with another person's. They ran into the issue of labels being out of range of the PC. The PCoffset could not be represented within the 9 bits. It took a while to figure out. We knew the issue was that the address was out of range but why? The reason was that their strings were so long, each character had its own address, the next label's address was pushed so far away it was out of the range of where it was needed. I suggest using LEA, but they ended up moving variables and strings closer to where they are used.
+
+Other information (Answer any questions posed in the lab assignment.)
+1) Addressing modes specify how the memory address should be accessed.
+
+2) Register, immediate, indirect, base + offset, and pc-relative are five addressing modes of the LC-3.
+
+3) The TRAP instruction is a way of running system calls and subroutines. We used GETC, PUTC, PUTS, and HALT all of which use TRAP.
+
+4) R7 stores the value of the address of where to return after the routine finishes. It is always R7 because RET will use R7 as an address to return to.
+
+Conclusion
+I felt the most important part of this lab was understanding how much control of the program you had. Compared to high-level languages there's more control in every way. When you branch to another address it is up to you if you want to return to the original location before the branch. I genearlly prefer to look at code and walk through each line in my head, but learning how to step through each instruction was extremely useful because you see what changes are being made. I gained a good understanding of basic assembly, but I hope I learn how to control the flow of the program better.

@@ -1,0 +1,72 @@
+Header
+###############################
+
+Bill Lin -- blin7
+
+Lab section: 6 TTh TA: Jay Roldan
+
+Due: 6/4/2014
+
+Lab Partner: Jonathan Lu
+
+###############################
+
+Timers and Interrupts
+
+Purpose
+The purpose of this lab to learn about and utilize interrupts in order to play notes through the speaker.
+
+Procedure
+I began working on the given subroutines and building other subroutines to simplify the process. Ensured the ISR would reset the flags and toggle the speaker. Set up EnableTimer and DisableTimer to ease the repeativeness. PlayNote I wrote to play specified note in memory respective to the button it was assigned to. ProgramNote is set up to allow us to assign notes to buttons. FreqToPeriod is used to convert the frequency to a usable period. Frequency is obtained through analogRead.
+
+Algorithms and other data
+I initially set up the ports to be either inputs or outputs. LEDs would be outputs while buttons and switches were inputs. By modifying the tristate of each port I accomplished this.
+
+Just as well I set up T1CON and the bits within it like TMR1. Many of the registers modified in this section are bits within a bigger register.
+
+I checked the buttons and switches to store their result. I then checked the results to determine the resulting action.
+
+The intention of CheckButton and CheckSwitches was to reduce repeativeness but also mimic the efficiency of switch statements in higher languages. Though it wasn't ideally implemented since I worked on it a couple of days then had to wait a few days before working on it again. This probably wouldn't have been the most efficient way for a small project but looking at this in a bigger project it would have been more useful.
+
+Equation text write up example and meanings:
+if (CheckButtons() == switch1) {
+
+} else (CheckButtons() == switch2) {
+
+} and so on...
+
+The idea was to avoid having to call CheckButton everytime which would take up a really few microseconds but countable time nonetheless. Rather than if and else statements I wanted to implement a switch statement
+
+switch (CheckButton()) {
+	case1:
+		break;
+	case2:
+		break;
+	case3:
+		break;
+	case4:
+		break;
+	default:
+		break;
+}
+
+Rather than calling CheckButtons several times it would only call CheckButtons once to compare its results to possibilities.
+
+Period = (fclk/256)*(1/2)*(1/Frequency)
+This is used to convert frequency to period. A 1/2 is used to account for how many times ISR is called. Thus creating an actual period with a crest and a trough.
+
+What went wrong or what were the challenges?
+Piecing it all together and trying to figure out how its intended to function.
+
+Other information (Answer any questions posed in the lab assignment.)
+
+1) The one half is to account for the nature of a period. A crest and a trough in each period.
+
+2) Use the equation provided to convert frequency to period which will be the note.
+
+3) As more things are pushed onto the stack the stack pointer grows to a lower number in memory. The stack pointer points to the top of the stack. We increment/decrement by 4 because it's byte addressable and changing by 4 would be 32 bits.
+
+4) Timer1 interrupt works by having a timer reach PR1 which will trigger the ISR and then reset itself.
+
+Conclusion
+In this lab I felt what I learned most what the benefits of interrupts versus polling. Interrupts freed up CPU cycles unlike polling which constantly checked for input. I also learned how to utilize the stack to avoid having to save various return addresses. I also found T1CON interesting as it contained bits for other important variables. In this lab I also learned it was a bad idea to branch to immediate offsets. Using labels is best to avoid unintended results. I also learned that subroutines should always return by convention.

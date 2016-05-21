@@ -1,0 +1,40 @@
+###############################
+
+Bill Lin -- blin7
+
+Lab section: 6 TTh TA: Jay Roldan
+
+Due: 5/21/2014
+
+Lab Partner: None
+
+###############################
+
+Lab 5: Arduino/PIC32
+
+Purpose
+The purpose of this lab is to become familiar with the Arduino and the I/O Shield. We'll accomplish this through applying our knowledge of assembly language and using the MIPS instruction set.
+
+Procedure
+I first started off with the delay function. I used the provided formula to figure out the delay constant would be. I then proceed to set up the switches for input and the LEDs as outputs. Then I wrote a bit of code that masks the port for switches to determine the state of the switches. I wrote patterns for each switch combination and have it loop checking the switches.
+
+Algorithms and other data
+The delay function had to account for the number of intructions within the loop as well. For two of my patterns I had a single bit shifted in one of the two directions 7 times to create the effect of bits turning on one by one. For my other pattern I hard-coded each LED that turns on.
+
+Equation text write up example and meanings
+
+80,000,000 inst/sec = ((instInner * someconstant) + instOuter) * a0
+
+This equation helps calculate the constant delay based on the number of instructions in the loop.
+
+Other information (Answer any questions posed in the lab assignment.)
+1) Serial output sends the text out bit by bit which is extremely long process when in the delay loop. This will cause our delay function to be longer than intended.
+
+2) The instruction after the branch will start executing and this will cause unwanted effects. An example could be doing addition before the value is loaded.
+
+3) Applying a mask that only reads from bits 8 and 9. Expand the mask to cover bits 8 through 11.
+
+4) My program toggles between patterns after the current pattern is finished. It does this because it checks the switches at the end of the light show. By implementing interrupts you could have the patterns switch immediately.
+
+Conclusion
+With this lab I was able to work on the flow of my program and the readability. I also learned how to manipulate ports with atomic registers. It also took a while to understand the purpose of the tri-state register. With all the instruction available I was able to do more. I learned that more than one instruction could be processed at once which is where the NOP instruction comes in.
